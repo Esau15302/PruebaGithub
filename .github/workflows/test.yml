@@ -38,9 +38,9 @@ jobs:
           else
             echo "PUBLISH_PROFILE: ${{ secrets.AZURE_SRV_PUBLISH_PROFILE_PROD }}" >> .env
           fi
-          cat .env
       - name: Run a one-line script
         run: |
-          echo ${{env.APP_NAME}} 
+          echo ${{env.APP_NAME}}
+          echo ${{env.PUBLISH_PROFILE}} 
 
       
