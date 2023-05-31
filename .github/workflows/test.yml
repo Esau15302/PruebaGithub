@@ -41,6 +41,6 @@ jobs:
       - name: Run a one-line script
         run: |
           echo APP_NAME: ${{env.APP_NAME}}
-          echo ${{env.PUBLISH_PROFILE}} | sed 's/./& /g' 
+          echo ${{env.PUBLISH_PROFILE}}
 
       
