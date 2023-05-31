@@ -42,5 +42,3 @@ jobs:
         run: |
           echo APP_NAME: ${{env.APP_NAME}}
           echo ${{ secrets[steps.publish-profile-selector.outputs.publish_profile_secret] }}
-
-      
