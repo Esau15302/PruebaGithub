@@ -41,6 +41,6 @@ jobs:
       - name: Run a one-line script
         run: |
           echo ${{env.APP_NAME}}
-          echo ${{env.PUBLISH_PROFILE}} 
+          cat .env  
 
       
