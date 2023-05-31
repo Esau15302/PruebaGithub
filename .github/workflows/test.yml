@@ -41,6 +41,6 @@ jobs:
       - name: Run a one-line script
         run: |
           echo APP_NAME: ${{env.APP_NAME}}
-          echo ${{ secrets.AZURE_SRV_PUBLISH_PROFILE_${{env.PUBLISH_PROFILE}} }}
+          echo ${{ secrets.'AZURE_SRV_PUBLISH_PROFILE_DEV' }}
 
       
