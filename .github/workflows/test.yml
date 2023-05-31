@@ -29,11 +29,11 @@ jobs:
       - name: Configure env
         run: |
           if [ "${{ github.event.inputs.env }}" == "dev" ]; then
-            echo "API_URL=https://api-dev.example.com" >> .env
+            echo "API_URL=https://api-dev.example.com" >> $GITHUB_ENV
           elif [ "${{ github.event.inputs.env }}" == "qa" ]; then
-            echo "API_URL=https://api-staging.example.com" >> .env
+            echo "API_URL=https://api-staging.example.com" >> $GITHUB_ENV
           else
-            echo "API_URL=https://api.example.com" >> .env
+            echo "API_URL=https://api.example.com" >> $GITHUB_ENV
           fi
       - name: Run a one-line script
         run: echo Hello, world! ${{env.API_URL}}
