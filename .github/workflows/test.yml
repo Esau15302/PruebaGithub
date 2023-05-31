@@ -32,15 +32,15 @@ jobs:
       
         run: |
           if [ "${{ github.event.inputs.env }}" == "dev" ]; then
-            echo "PUBLISH_PROFILE: ${{ secrets.AZURE_SRV_PUBLISH_PROFILE_DEV }}" >> .env
+            echo "ENV: DEV" >> $GITHUB_ENV
           elif [ "${{ github.event.inputs.env }}" == "qa" ]; then
-            echo "PUBLISH_PROFILE: ${{ secrets.AZURE_SRV_PUBLISH_PROFILE_QA }}" >> .env
+            echo "ENV: QA" >> $GITHUB_ENV
           else
-            echo "PUBLISH_PROFILE: ${{ secrets.AZURE_SRV_PUBLISH_PROFILE_PROD }}" >> .env
+            echo "ENV: PROD" >> $GITHUB_ENV
           fi
       - name: Run a one-line script
         run: |
-          echo ${{env.APP_NAME}}
-          cat .env | sed 's/./& /g' 
+          echo ${{env.APP_NAME}} 
+          echo ${{ secrets.AZURE_SRV_PUBLISH_PROFILE_${{env.ENV}} }}
 
       
