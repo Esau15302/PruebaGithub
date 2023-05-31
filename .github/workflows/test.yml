@@ -16,11 +16,15 @@ on:
         required: true
         default: dev
 
-env:
+variables:
   dev: DEV
   qa: QA
   prod: PROD
-  test: ${{env.${{github.event.inputs.env}}}}
+
+
+env:
+  
+  test: ${{variables.${{github.event.inputs.env}}}}
       
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
