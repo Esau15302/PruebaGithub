@@ -29,21 +29,18 @@ jobs:
     steps:
       # Runs a single command using the runners shell
       - name: Configure env
-        id: publish-profile-selector
+      
         run: |
-          if [ "${{ github.event.inputs.env }}" == "prod" ]; then
-            echo "::set-output name=publish_profile_secret::AZURE_SRV_PUBLISH_PROFILE_PROD"
+          if [ "${{ github.event.inputs.env }}" == "dev" ]; then
+            echo PUBLISH_PROFILE="AZURE_SRV_PUBLISH_PROFILE_DEV" >> $GITHUB_ENV
           elif [ "${{ github.event.inputs.env }}" == "qa" ]; then
-            echo "::set-output name=publish_profile_secret::AZURE_SRV_PUBLISH_PROFILE_QA"
+            echo PUBLISH_PROFILE="AZURE_SRV_PUBLISH_PROFILE_QA" >> $GITHUB_ENV
           else
-            echo "::set-output name=publish_profile_secret::AZURE_PUBLISH_PROFILE_DEV"
+            echo PUBLISH_PROFILE="AZURE_SRV_PUBLISH_PROFILE_PROD" >> $GITHUB_ENV
           fi
       - name: Run a one-line script
         run: |
           echo APP_NAME: ${{env.APP_NAME}}
-          echo steps.publish-profile-selector.outputs.publish_profile_secret
-
-                  
-
+          echo ${{secrets[${{env.PUBLISH_PROFILE}}]}}
 
       
