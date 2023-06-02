@@ -36,7 +36,7 @@ jobs:
           elseif ("${{ github.event.inputs.env }}" -eq "qa")  
             {echo "::set-output name=publish_profile_secret::AZURE_SRV_PUBLISH_PROFILE_QA"}
           else  
-            {echo "::set-output name=publish_profile_secret::AZURE_SRV_PUBLISH_PROFILE_PROD"}
+            {echo "::set-output name=publish_profile_secret::AZURE_SRV_PUBLISH_PROFILE_DEV"}
       - name: Run a one-line script
         run: |
           echo APP_NAME: ${{env.APP_NAME}}
