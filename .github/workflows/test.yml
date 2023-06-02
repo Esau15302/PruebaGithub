@@ -32,8 +32,8 @@ jobs:
         id: publish-profile-selector
         run: |
           if ("${{ github.event.inputs.env }}" -eq "dev") {echo "::set-output name=publish_profile_secret::AZURE_SRV_PUBLISH_PROFILE_DEV"}
-          if ()"${{ github.event.inputs.env }}" -eq "qa")  {echo "::set-output name=publish_profile_secret::AZURE_SRV_PUBLISH_PROFILE_QA"}
-          if ()"${{ github.event.inputs.env }}" -eq "prod") {echo "::set-output name=publish_profile_secret::AZURE_SRV_PUBLISH_PROFILE_PROD"}
+          if ("${{ github.event.inputs.env }}" -eq "qa")  {echo "::set-output name=publish_profile_secret::AZURE_SRV_PUBLISH_PROFILE_QA"}
+          if ("${{ github.event.inputs.env }}" -eq "prod") {echo "::set-output name=publish_profile_secret::AZURE_SRV_PUBLISH_PROFILE_PROD"}
       - name: Run a one-line script
         run: |
           echo APP_NAME: ${{env.APP_NAME}}
